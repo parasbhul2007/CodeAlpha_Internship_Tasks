@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="A responsive image gallery with category filters and a lightbox viewer.">
+  <title>Frame — Image Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Frame home"><span class="brand-mark">F</span><span>frame<span class="brand-dot">.</span></span></a>
+    <span class="header-note">A collection of moments</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">VISUAL JOURNAL / 2026</p>
+      <h1>See the world<br><em>in frames.</em></h1>
+      <p class="intro-copy">A little collection of places, details and moments worth keeping.</p>
+    </section>
+
+    <section class="gallery-section" aria-label="Image gallery">
+      <div class="gallery-toolbar">
+        <div class="filters" role="group" aria-label="Filter images">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span>08</span></button>
+          <button class="filter-btn" data-filter="nature" aria-pressed="false">Nature</button>
+          <button class="filter-btn" data-filter="architecture" aria-pressed="false">Architecture</button>
+          <button class="filter-btn" data-filter="travel" aria-pressed="false">Travel</button>
+        </div>
+        <p class="image-count"><span id="visible-count">08</span> photographs</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <button class="gallery-card card-tall" data-category="nature" data-index="0" aria-label="View Alpine morning">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="Mountain peaks under a soft morning sky" loading="lazy">
+          <span class="card-overlay"><span class="card-category">NATURE</span><span class="card-title">Alpine morning</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="architecture" data-index="1" aria-label="View Lines and light">
+          <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=85" alt="Minimal modern white architecture" loading="lazy">
+          <span class="card-overlay"><span class="card-category">ARCHITECTURE</span><span class="card-title">Lines &amp; light</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="travel" data-index="2" aria-label="View Coastal escape">
+          <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Turquoise ocean waves along the coast" loading="lazy">
+          <span class="card-overlay"><span class="card-category">TRAVEL</span><span class="card-title">Coastal escape</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="nature" data-index="3" aria-label="View Into the forest">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85" alt="Sunlight filtering through a green forest" loading="lazy">
+          <span class="card-overlay"><span class="card-category">NATURE</span><span class="card-title">Into the forest</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card card-wide" data-category="travel" data-index="4" aria-label="View Open road">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=85" alt="A scenic landscape with a winding path" loading="lazy">
+          <span class="card-overlay"><span class="card-category">TRAVEL</span><span class="card-title">The open road</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="architecture" data-index="5" aria-label="View Urban geometry">
+          <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85" alt="Geometric city architecture viewed from below" loading="lazy">
+          <span class="card-overlay"><span class="card-category">ARCHITECTURE</span><span class="card-title">Urban geometry</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="nature" data-index="6" aria-label="View Quiet waters">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Quiet lake reflecting mountains" loading="lazy">
+          <span class="card-overlay"><span class="card-category">NATURE</span><span class="card-title">Quiet waters</span><span class="view-icon">↗</span></span>
+        </button>
+        <button class="gallery-card" data-category="travel" data-index="7" aria-label="View Golden hour">
+          <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=85" alt="Warm evening light over a scenic destination" loading="lazy">
+          <span class="card-overlay"><span class="card-category">TRAVEL</span><span class="card-title">Golden hour</span><span class="view-icon">↗</span></span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>FRAME / VISUAL JOURNAL</span><span>Made to explore, one frame at a time.</span></footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="close-lightbox" aria-label="Close image viewer">×</button>
+    <button class="lightbox-nav prev" id="prev-image" aria-label="Previous image">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-image" src="" alt="">
+      <figcaption><span id="lightbox-title"></span><span id="lightbox-counter"></span></figcaption>
+    </figure>
+    <button class="lightbox-nav next" id="next-image" aria-label="Next image">›</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
